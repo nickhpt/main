@@ -3,22 +3,24 @@ close all; clear all; clc
 %Call main function
 main()
 
+
 %Functions
 %---------------------------------------------------------------------------
 function someOutput = main()
-%Initialize
-membersToAdd = {'Kevin','Kasper','Marcus'};
-memberBalance = struct('Nick',0);
-currentMemberBalance = addMember(memberBalance,membersToAdd);
+    %Initialize
+    membersToAdd = {'Kevin','Kasper','Marcus'};
+    memberBalance = struct('Nick',0);
 
-%Add balance
-updateAmount = 434;
-updater = 'Nick';
-owners = {'Marcus','Kevin'};
-updatedBalance = updateBalance(updateAmount,updater,owners,currentMemberBalance);
-
-%To cmd win
-someOutput = updatedBalance;
+    currentMemberBalance = addMember(memberBalance,membersToAdd);
+   
+    %Add balance
+    updateAmount = 10;
+    updater = 'Nick';
+    owners = {'Marcus','Kevin'};
+    updatedBalance = updateBalance(updateAmount,updater,owners,currentMemberBalance);
+    
+    %To cmd win
+    someOutput = updatedBalance;
 end
 
 
@@ -28,8 +30,8 @@ end
 %Input: "owners"         [string array with the owners names]
 %Output "UpdatedBalance" [struct with the updated balance]
 function currentMemberBalance = updateBalance(amount,updater,owners,currentMemberBalance)
-    splitAmount = amount/length(owners);
-    numberOfOwners = length(owners);
+    numberOfOwners = length(owners);    
+    splitAmount = amount/numberOfOwners;   
 
     for i = 1:numberOfOwners
         currentMemberBalance.(owners{i}) = currentMemberBalance.(owners{i}) - splitAmount;
@@ -42,7 +44,6 @@ end
 %Input:  "memberBalance" [struct with current members and their balance]
 %Input:  "membersToAdd"  [string array with members to add]
 %Output: "members"       [struct with updated member list]
-
 function members = addMember(memberBalance,membersToAdd)
     currentMemberBalance = memberBalance;  
 
@@ -52,3 +53,13 @@ function members = addMember(memberBalance,membersToAdd)
 
     members = currentMemberBalance;
 end
+
+
+
+
+
+
+
+
+
+
